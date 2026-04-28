@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Elders & Kin | Precision Cosmetic Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- DESIGN SYSTEM --- */
+        :root {
+            --bg-dark: #0a0a14;
+            --bg-card: #121225;
+            --accent-purple: #7000ff;
+            --accent-blue: #0070ff;
+            --accent-teal: #00f2ff;
+            --text-main: #e0e0f0;
+            --text-dim: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --grad-energetic: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* --- MODERN GLITCH/GRID OVERLAY --- */
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: 
+                linear-gradient(var(--glass-border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(10, 10, 20, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            height: 70px;
+            display: flex; align-items: center;
+        }
+
+        .nav-inner {
+            display: flex; justify-content: space-between; align-items: center; width: 100%;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem; font-weight: 700;
+            background: var(--grad-energetic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            font-size: 0.85rem; font-weight: 600; text-decoration: none; color: var(--text-dim);
+            transition: 0.3s; cursor: pointer;
+        }
+        .nav-links a:hover { color: var(--accent-teal); }
+
+        .btn-glow {
+            padding: 0.6rem 1.5rem;
+            background: var(--grad-energetic);
+            border-radius: 4px;
+            color: white !important;
+            box-shadow: 0 0 20px rgba(112, 0, 255, 0.3);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 160px 0 100px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: ''; position: absolute; top: 10%; right: -5%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, var(--accent-purple) 0%, transparent 70%);
+            filter: blur(80px); opacity: 0.3; z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            line-height: 0.9; margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span { color: var(--accent-teal); }
+
+        .hero-sub {
+            font-size: 1.25rem; color: var(--text-dim);
+            max-width: 600px; margin-bottom: 3rem;
+        }
+
+        /* --- DATA GRID --- */
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem; margin-top: 4rem;
+        }
+
+        .data-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            position: relative;
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .data-card:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .data-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 0%;
+            background: var(--accent-teal); transition: 0.3s;
+        }
+        .data-card:hover::before { height: 100%; }
+
+        .data-card h3 { margin-bottom: 1rem; font-size: 1.2rem; color: #fff; }
+        .data-card p { font-size: 0.9rem; color: var(--text-dim); }
+
+        /* --- SCIENTIFIC UI ELEMENTS --- */
+        .badge {
+            display: inline-block; padding: 4px 12px;
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; margin-bottom: 1rem;
+        }
+
+        .stat-group {
+            display: flex; gap: 4rem; margin-top: 3rem;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+        }
+
+        .stat-val { font-family: 'Space Grotesk'; font-size: 2.5rem; display: block; color: var(--accent-teal); }
+        .stat-label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.1em; }
+
+        /* --- PAGES --- */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .stat-group { flex-direction: column; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container nav-inner">
+        <a class="nav-logo" onclick="showPage('home')">ELDERS & KIN // SYS</a>
+        <div class="nav-links">
+            <a onclick="showPage('home')">DASHBOARD</a>
+            <a onclick="showPage('services')">PROTOCOLS</a>
+            <a onclick="showPage('about')">LAB_INFO</a>
+            <a onclick="showPage('contact')" class="btn-glow">INITIATE_PROJECT</a>
+        </div>
+    </div>
+</nav>
+
+<div id="page-home" class="page active">
+    <section class="hero">
+        <div class="container">
+            <div class="badge">Status: Research & Development Active</div>
+            <h1>PRECISION<br><span>SKIN SCIENCE</span></h1>
+            <p class="hero-sub">We engineer high-performance skincare formulations using molecular biology and clinical validation. Modern chemistry for the next era of aesthetic brands.</p>
+            
+            <div class="stat-group">
+                <div><span class="stat-val">50+</span><span class="stat-label">Molecular Formulas</span></div>
+                <div><span class="stat-val">12</span><span class="stat-label">Active Market Launches</span></div>
+                <div><span class="stat-val">ISO</span><span class="stat-label">GMP Standards</span></div>
+            </div>
+
+            <div class="services-grid">
+                <div class="data-card" onclick="showPage('services')">
+                    <h3>01 // AUDIT</h3>
+                    <p>Rigorous ingredient safety analysis and molecular stability verification.</p>
+                </div>
+                <div class="data-card" onclick="showPage('services')">
+                    <h3>02 // SYNTHESIS</h3>
+                    <p>Bespoke product development from brief to clinical prototype.</p>
+                </div>
+                <div class="data-card" onclick="showPage('services')">
+                    <h3>03 // COMPLIANCE</h3>
+                    <p>NAFDAC, TGA, and EU regulatory dossier engineering.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="page-services" class="page">
+    <section class="hero">
+        <div class="container">
+            <div class="badge">Protocol // Service_Tiers</div>
+            <h2>Technical <span>Offerings</span></h2>
+            <div class="services-grid">
+                <div class="data-card">
+                    <h3>Full Brand Launch</h3>
+                    <p>End-to-end engineering from $120k AUD. Total market readiness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function showPage(id) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        const pg = document.getElementById('page-' + id);
+        if (pg) pg.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Scroll reveal animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.style.opacity = '1';
+                e.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.data-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+        observer.observe(el);
+    });
+</script>
+
+</body>
+</html>
